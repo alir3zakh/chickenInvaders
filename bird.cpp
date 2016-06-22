@@ -3,6 +3,7 @@
 Bird::Bird()
 {
     setPixmap(QPixmap(":/img/bird.png"));
+    setScale(.6);
 
     //moveAnim
     moveAnim = new QPropertyAnimation(this);

@@ -4,5 +4,6 @@
         <file>Bground.jpg</file>
         <file>bird.png</file>
         <file>egg.png</file>
+        <file>rocket.png</file>
     </qresource>
 </RCC>

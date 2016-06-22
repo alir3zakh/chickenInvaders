@@ -8,7 +8,7 @@
 Level1::Level1()
     :itemCount(0)
 {
-    setSceneRect(0,0,1250,700);
+    setSceneRect(0,0,1200,700);
     plane = new Plane();
     plane->setPos((width() / 2) - plane->pixmap().width()/2,
                   height() - plane->pixmap().height());
