@@ -1,15 +1,17 @@
 #include "game.h"
+#include "level1.h"
 
 Game::Game(QWidget * parent) : QGraphicsView(parent) {
-    scene = new QGraphicsScene();
-    scene->setSceneRect(0, 0, 1200, 700);
+    lvl = new Level1();
+    setStyleSheet("background-image: url(:/img/Bground.jpg); background-position: 0px 0px;");
 
-    this->setScene(scene);
-    this->setFixedSize(1200, 700);
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    plane = new Plane();
-    plane->setPos((scene->width() / 2) - plane->pixmap().width()/2,
-                  scene->height() - plane->pixmap().height());
-    scene->addItem(plane);
+    setScene(lvl);
+    this->setFixedSize(1250, 700);
+
+    this->show();
+
 }
 
