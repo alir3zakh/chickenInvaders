@@ -2,5 +2,7 @@
     <qresource prefix="/img">
         <file>plane.png</file>
         <file>Bground.jpg</file>
+        <file>bird.png</file>
+        <file>egg.png</file>
     </qresource>
 </RCC>

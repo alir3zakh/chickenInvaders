@@ -94,3 +94,7 @@ void Plane::keyPressEvent(QKeyEvent *event)
     }
 }
 
+void Plane::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+}
+
