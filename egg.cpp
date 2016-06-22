@@ -15,11 +15,6 @@ Egg::Egg()
 void Egg::move()
 {
     setPos(x(),y()+10);
-    if(y()>700)
-    {
-        scene()->removeItem(this);
-        delete this;
-    }
     //if collides with the plane decrease the player's health
     QList<QGraphicsItem *> items = collidingItems();
     for(int i=0 ; i<items.size() ;i++)
@@ -29,4 +24,11 @@ void Egg::move()
             exit(0);
         }
     }
+
+    if(y()>700)
+    {
+        scene()->removeItem(this);
+        delete this;
+    }
+
 }
