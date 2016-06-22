@@ -1,1 +1,6 @@
-
+<RCC>
+    <qresource prefix="/img">
+        <file>plane.png</file>
+        <file>Bground.jpg</file>
+    </qresource>
+</RCC>
