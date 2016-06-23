@@ -9,8 +9,6 @@
 class Game : public QGraphicsView {
 public:
     Game(QWidget * parent = 0);
-
-private:
     Level1 * lvl;
 };
 

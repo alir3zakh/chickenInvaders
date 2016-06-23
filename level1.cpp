@@ -8,11 +8,30 @@
 Level1::Level1()
     :itemCount(0)
 {
-    setSceneRect(0,0,1250,700);
+    setSceneRect(0,0,1200,700);
     plane = new Plane();
     plane->setPos((width() / 2) - plane->pixmap().width()/2,
                   height() - plane->pixmap().height());
     addItem(plane);
+
+    //adding score
+    sc = new Score();
+    addItem(sc);
+
+    //adding hearts to scene
+    for(int i=0; i<3;i++)
+    {
+        QGraphicsPixmapItem *h = new QGraphicsPixmapItem();
+        h->setPixmap(QPixmap(":/img/heart.png"));
+        h->setScale(.7);
+        hearts.push_back(h);
+        addItem(h);
+    }
+
+    hearts[0]->setPos(0,650);
+    hearts[1]->setPos(60,650);
+    hearts[2]->setPos(120,650);
+
 
     points.push_back(QPointF(25,0));
     for(int i=1; i<10; i++)
@@ -63,6 +82,6 @@ void Level1::throwEgg()
 {
     Egg * egg = new Egg();
     int randN = qrand()%(birds.size());
-    egg->setPos(birds[randN]->x()+47 , birds[randN]->y()+95);
+    egg->setPos(birds[randN]->x()+27 , birds[randN]->y()+66);
     addItem(egg);
 }

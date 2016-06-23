@@ -1,11 +1,12 @@
 #ifndef PLANE_H
 #define PLANE_H
 
-#include <QGraphicsPathItem>
+#include <QGraphicsPixmapItem>
 #include <QPropertyAnimation>
 #include <QKeyEvent>
 #include <QMouseEvent>
 #include <QObject>
+#include "rocket.h"
 
 class Plane : public QObject, public QGraphicsPixmapItem{
     Q_OBJECT

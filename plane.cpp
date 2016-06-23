@@ -1,11 +1,11 @@
 #include "plane.h"
 #include <QDebug>
+#include <QGraphicsScene>
+
 Plane::Plane()
 {
     setPixmap(QPixmap(":img/plane.png"));
     setScale(.65);
-
-    //set
 
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFocus();
@@ -88,6 +88,14 @@ void Plane::keyPressEvent(QKeyEvent *event)
         dAnimation->setEndValue(y() + 40);
         dAnimation->start();
         break;
+
+    case Qt::Key_Space:{
+        rocket * myRocket = new rocket();
+        scene()->addItem(myRocket);
+        myRocket->setPos(x() + QPixmap().width(), y() + QPixmap().height());
+        myRocket->shoot();
+        break;
+        }
 
     default:
         break;
