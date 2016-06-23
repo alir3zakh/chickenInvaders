@@ -1,3 +1,6 @@
+QT += widgets\
+    multimedia
+
 SOURCES += \
     main.cpp \
     game.cpp \
@@ -8,7 +11,6 @@ SOURCES += \
     rocket.cpp \
     score.cpp \
     bullet.cpp
-QT += widgets
 
 HEADERS += \
     game.h \
@@ -21,4 +23,5 @@ HEADERS += \
     bullet.h
 
 RESOURCES += \
-    graphics/images.qrc
+    graphics/images.qrc \
+    sound/sounds.qrc

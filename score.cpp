@@ -1,5 +1,8 @@
 #include "score.h"
 #include <QFont>
+#include "game.h"
+
+extern Game * game;
 
 Score::Score()
     :score(0)
@@ -22,4 +25,7 @@ void Score::increase()
     setFont(QFont("Algerian",25));
     setDefaultTextColor(QColor("grey"));
     setPos(0,600);
+    if((score % 500) == 0){
+        game->lvl->plane->missileCount += 1;
+    }
 }
