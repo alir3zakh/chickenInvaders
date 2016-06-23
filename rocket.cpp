@@ -2,6 +2,10 @@
 #include <QGraphicsScene>
 #include <QtMath>
 #include <QDebug>
+#include "level1.h"
+#include "game.h"
+
+extern Game *game;
 
 rocket::rocket()
 {
@@ -61,6 +65,21 @@ void rocket::smash()
 {
     if(xAnimation->state() == QAbstractAnimation::Stopped){
         scene()->removeItem(this);
+        if(game->lvl->birds.isEmpty())
+            return;
+//        if(game->lvl->birds.size() == 1)
+//        {
+//            delete game->lvl->birds.at(0);
+//            game->lvl->birds.pop_back();
+//            return;
+//        }
+        for(int i =0;i<game->lvl->birds.size()/2;i++)
+        {
+            QVector<Bird *>::Iterator it = game->lvl->birds.begin();
+            delete game->lvl->birds.at(i);
+            game->lvl->birds.erase(it+i);
+            game->lvl->sc->increase();
+        }
         delete this;
     }
 }

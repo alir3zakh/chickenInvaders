@@ -5,6 +5,7 @@
 #include <QVector>
 #include "bird.h"
 #include "plane.h"
+#include "score.h"
 
 class Level1 :public QGraphicsScene
 {
@@ -14,7 +15,9 @@ public:
     Plane * plane;
     QVector<QPointF> points;
     QVector<Bird *> birds;
+    QVector<QGraphicsPixmapItem *> hearts;
     int itemCount;
+    Score * sc;
 public slots:
     void spawn();
     void throwEgg();

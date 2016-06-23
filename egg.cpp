@@ -3,6 +3,9 @@
 #include <QGraphicsScene>
 #include <QList>
 #include "plane.h"
+#include "game.h"
+
+extern Game * game;
 
 Egg::Egg()
 {
@@ -23,7 +26,15 @@ void Egg::move()
     {
         if(typeid(*(items[i])) == typeid(Plane))
         {
-            exit(0);
+            int size = game->lvl->hearts.size();
+
+            if(size==1)
+                exit(0);
+
+            delete this;
+            delete game->lvl->hearts.at(size-1);
+            game->lvl->hearts.pop_back();
+            return;
         }
     }
 

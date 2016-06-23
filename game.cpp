@@ -1,5 +1,6 @@
 #include "game.h"
 #include "level1.h"
+#include <QTimer>
 
 Game::Game(QWidget * parent) : QGraphicsView(parent) {
     lvl = new Level1();
@@ -7,7 +8,7 @@ Game::Game(QWidget * parent) : QGraphicsView(parent) {
                   "background-repeat: repeat-x; background-attachment: scroll");
 
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    //setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     setScene(lvl);
     this->setFixedSize(1200, 700);
