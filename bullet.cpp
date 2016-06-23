@@ -1,6 +1,6 @@
 #include "bullet.h"
 #include <QGraphicsScene>
-
+#include <QMediaPlayer>
 bullet::bullet(qreal bulletAngel)
 {
     setPixmap(QPixmap(":img/bullet.png"));
@@ -24,6 +24,10 @@ void bullet::advance(int phase)
     {
         if(typeid(*(items[i])) == typeid(Bird))
         {
+            QMediaPlayer * death = new QMediaPlayer();
+            death->setMedia(QUrl("qrc:sound/chicken.mp3"));
+            death->play();
+
             scene()->removeItem(items[i]);
             delete(items[i]);
 

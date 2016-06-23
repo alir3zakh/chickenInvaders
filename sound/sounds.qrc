@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/sound">
+        <file>bullet.mp3</file>
+        <file>chicken.mp3</file>
+        <file>explosion.mp3</file>
+        <file>missile_lunch.mp3</file>
+    </qresource>
+</RCC>

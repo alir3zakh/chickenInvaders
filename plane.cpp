@@ -1,6 +1,7 @@
 #include "plane.h"
 #include <QDebug>
 #include <QGraphicsScene>
+#include <QMediaPlayer>
 
 Plane::Plane()
 {
@@ -107,6 +108,10 @@ void Plane::keyPressEvent(QKeyEvent *event)
             newBullet->setPos(x() + 35, y() + 10);
             scene()->addItem(newBullet);
         }
+
+        QMediaPlayer * bulletsound = new QMediaPlayer();
+        bulletsound->setMedia(QUrl("qrc:/sound/bullet.mp3"));
+        bulletsound->play();
         break;
     }
 
