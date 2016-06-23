@@ -37,6 +37,8 @@ Plane::Plane()
     dAnimation->setStartValue(y());
     dAnimation->setEndValue(y() + 40);
     dAnimation->setDuration(100);
+
+    bulletPower = 1;
 }
 
 int Plane::xFactor()
@@ -92,10 +94,29 @@ void Plane::keyPressEvent(QKeyEvent *event)
     case Qt::Key_Space:{
         rocket * myRocket = new rocket();
         scene()->addItem(myRocket);
-        myRocket->setPos(x() + QPixmap().width(), y() + QPixmap().height());
+        myRocket->setPos(x() + 35, y() + 20);
         myRocket->shoot();
         break;
+    }
+
+    case Qt::Key_Control:{
+        int regionCount = bulletPower + 3;
+        qreal baseAngel = 180 / regionCount;
+        for(int i = 0; i < bulletPower; i++){
+            bullet * newBullet = new bullet((i+2) * baseAngel);
+            newBullet->setPos(x() + 35, y() + 10);
+            scene()->addItem(newBullet);
         }
+        break;
+    }
+
+    case Qt::Key_W:
+        bulletPower++;
+        break;
+
+    case Qt::Key_S:
+        bulletPower--;
+        break;
 
     default:
         break;

@@ -5,7 +5,8 @@ SOURCES += \
     bird.cpp \
     level1.cpp \
     egg.cpp \
-    rocket.cpp
+    rocket.cpp \
+    bullet.cpp
 QT += widgets
 
 HEADERS += \
@@ -14,7 +15,8 @@ HEADERS += \
     bird.h \
     level1.h \
     egg.h \
-    rocket.h
+    rocket.h \
+    bullet.h
 
 RESOURCES += \
     graphics/images.qrc

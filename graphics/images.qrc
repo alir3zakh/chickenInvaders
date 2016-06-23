@@ -5,5 +5,6 @@
         <file>bird.png</file>
         <file>egg.png</file>
         <file>rocket.png</file>
+        <file>bullet.png</file>
     </qresource>
 </RCC>

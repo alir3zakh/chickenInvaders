@@ -3,6 +3,7 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QTimer>
 #include "plane.h"
 #include "level1.h"
 
@@ -12,6 +13,7 @@ public:
 
 private:
     Level1 * lvl;
+    QTimer * timer;
 };
 
 #endif // GAME_H

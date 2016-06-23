@@ -9,6 +9,7 @@ Level1::Level1()
     :itemCount(0)
 {
     setSceneRect(0,0,1200,700);
+    setBackgroundBrush(QImage(":img/Bground.jpg"));
     plane = new Plane();
     plane->setPos((width() / 2) - plane->pixmap().width()/2,
                   height() - plane->pixmap().height());

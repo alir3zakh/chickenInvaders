@@ -14,5 +14,8 @@ Game::Game(QWidget * parent) : QGraphicsView(parent) {
 
     this->show();
 
+    timer = new QTimer();
+    connect(timer, SIGNAL(timeout()), lvl, SLOT(advance()));
+    timer->start(25);
 }
 
