@@ -5,8 +5,7 @@
 #include "egg.h"
 #include "plane.h"
 
-Level1::Level1()
-    :itemCount(0)
+Level1::Level1() :itemCount(0)
 {
     setSceneRect(0,0,1200,700);
     plane = new Plane();

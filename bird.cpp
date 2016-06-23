@@ -15,12 +15,12 @@ Bird::Bird()
     static int rand = 1;
     if(rand)
     {
-        setPos(1250+119,qrand()%350);
+        setPos(1200+119,qrand()%300);
         rand -=1;
     }
     else
     {
-        setPos(-119,qrand()%350);
+        setPos(-119,qrand()%300);
         rand +=1;
     }
 }

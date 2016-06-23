@@ -40,6 +40,7 @@ Plane::Plane()
     dAnimation->setDuration(100);
 
     bulletPower = 1;
+    missileCount = 1;
 }
 
 int Plane::xFactor()
@@ -67,7 +68,7 @@ void Plane::keyPressEvent(QKeyEvent *event)
     switch(event->key())
     {
     case Qt::Key_Right:
-        if(rAnimation->state() == QAbstractAnimation::Stopped){
+        if(x() < 1130) {
         rAnimation->setStartValue(x());
         rAnimation->setEndValue(x() + 40);
         rAnimation->start();
@@ -75,28 +76,37 @@ void Plane::keyPressEvent(QKeyEvent *event)
         break;
 
     case Qt::Key_Left:
+        if(x() > 0){
         lAnimation->setStartValue(x());
         lAnimation->setEndValue(x() - 40);
         lAnimation->start();
+        }
         break;
 
     case Qt::Key_Up:
+        if(y() > 30){
         uAnimation->setStartValue(y());
         uAnimation->setEndValue(y() - 40);
         uAnimation->start();
+        }
         break;
 
     case Qt::Key_Down:
+        if(y() < 580){
         dAnimation->setStartValue(y());
         dAnimation->setEndValue(y() + 40);
         dAnimation->start();
+        }
         break;
 
     case Qt::Key_Space:{
+        if(!missileCount)
+            break;
         rocket * myRocket = new rocket();
         scene()->addItem(myRocket);
         myRocket->setPos(x() + 35, y() + 20);
         myRocket->shoot();
+        missileCount--;
         break;
     }
 

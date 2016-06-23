@@ -17,6 +17,7 @@ void bullet::advance(int phase)
     if(x() > 1200 || y() < 0){
         scene()->removeItem(this);
         delete this;
+        return;
     }
 
     QList<QGraphicsItem *> items = collidingItems();
