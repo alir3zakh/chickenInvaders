@@ -5,8 +5,7 @@
 #include "egg.h"
 #include "plane.h"
 
-Level1::Level1()
-    :itemCount(0)
+Level1::Level1() :itemCount(0)
 {
     setSceneRect(0,0,1200,700);
     plane = new Plane();
@@ -32,21 +31,26 @@ Level1::Level1()
     hearts[1]->setPos(60,650);
     hearts[2]->setPos(120,650);
 
-
-    points.push_back(QPointF(25,0));
+    //scene points for chickens
+    points.push_back(QPointF(120,30));
     for(int i=1; i<10; i++)
     {
-        points.push_back(QPointF(points[i-1].x()+120,0));
+        points.push_back(QPointF(points[i-1].x()+95,30));
     }
-    points.push_back(QPointF(25,100));
+    points.push_back(QPointF(120,100));
     for(int i=1; i<10; i++)
     {
-        points.push_back(QPointF(points[i-1].x()+120,100));
+        points.push_back(QPointF(points[i-1].x()+95,100));
     }
-    points.push_back(QPointF(25,200));
+    points.push_back(QPointF(120,170));
     for(int i=1; i<10; i++)
     {
-        points.push_back(QPointF(points[i-1].x()+120,200));
+        points.push_back(QPointF(points[i-1].x()+95,170));
+    }
+    points.push_back(QPointF(120,240));
+    for(int i=1; i<10; i++)
+    {
+        points.push_back(QPointF(points[i-1].x()+95,240));
     }
 
     QTimer * timer = new QTimer();
@@ -60,7 +64,7 @@ Level1::Level1()
 
 void Level1::spawn()
 {
-    if(itemCount > 29)
+    if(itemCount > 39)
         return;
     Bird * bird = new Bird();
     birds.push_back(bird);
@@ -80,6 +84,8 @@ void Level1::spawn()
 
 void Level1::throwEgg()
 {
+    if(birds.isEmpty())
+        return;
     Egg * egg = new Egg();
     int randN = qrand()%(birds.size());
     egg->setPos(birds[randN]->x()+27 , birds[randN]->y()+66);

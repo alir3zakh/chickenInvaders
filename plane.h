@@ -15,10 +15,13 @@ class Plane : public QObject, public QGraphicsPixmapItem{
     Q_PROPERTY(int yFactor READ yFactor WRITE setYFactor)
 public:
     Plane();
+    int missileCount;
+
     int xFactor();
     int yFactor();
     void setXFactor(int newX);
     void setYFactor(int newY);
+
     void keyPressEvent(QKeyEvent *event);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 

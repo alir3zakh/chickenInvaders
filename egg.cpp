@@ -1,6 +1,6 @@
 #include "egg.h"
-#include <QTimer>
 #include <QGraphicsScene>
+#include <QMediaPlayer>
 #include <QList>
 #include "plane.h"
 #include "game.h"
@@ -9,17 +9,39 @@ extern Game * game;
 
 Egg::Egg()
 {
+    QMediaPlayer * chickenLay = new QMediaPlayer();
+    chickenLay->setMedia(QUrl("qrc:/sound/Chicken_lay.mp3"));
+    chickenLay->play();
+
     setPixmap(QPixmap(":/img/egg.png"));
     setScale(.7);
 
-    QTimer *timer = new QTimer();
+    timer = new QTimer();
     connect(timer , SIGNAL(timeout()), this , SLOT(move()));
-    timer->start(50);
+    timer->start(25);
+
+    opacityAnimation = new QPropertyAnimation(this);
+    opacityAnimation->setTargetObject(this);
+    opacityAnimation->setPropertyName("opacity");
+    opacityAnimation->setStartValue(1);
+    opacityAnimation->setEndValue(0);
+    opacityAnimation->setDuration(1500);
 }
 
 void Egg::move()
 {
-    setPos(x(),y()+10);
+    if(y() > 650){
+        QMediaPlayer * eggSplat = new QMediaPlayer();
+        eggSplat->setMedia(QUrl("qrc:sound/Egg_splat.mp3"));
+        eggSplat->play();
+
+        setPixmap(QPixmap(":/img/broken-egg.png"));
+        opacityAnimation->start();
+        timer->stop();
+        return;
+    }
+
+    setPos(x(),y() + 5);
     //if collides with the plane decrease the player's health
     QList<QGraphicsItem *> items = collidingItems();
     for(int i=0 ; i<items.size() ;i++)
@@ -36,12 +58,6 @@ void Egg::move()
             game->lvl->hearts.pop_back();
             return;
         }
-    }
-
-    if(y()>700)
-    {
-        scene()->removeItem(this);
-        delete this;
     }
 
 }
