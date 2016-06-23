@@ -23,9 +23,6 @@ void bullet::advance(int phase)
         delete this;
         return;
     }
-    QMediaPlayer * death = new QMediaPlayer();
-    death->setMedia(QUrl("qrc:sound/chicken.mp3"));
-    death->play();
 
     QList<QGraphicsItem *> items = collidingItems();
     for(int i=0 ; i<items.size() ;i++)

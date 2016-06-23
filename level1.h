@@ -6,6 +6,7 @@
 #include "bird.h"
 #include "plane.h"
 #include "score.h"
+#include "missle.h"
 
 class Level1 :public QGraphicsScene
 {
@@ -18,6 +19,7 @@ public:
     QVector<QGraphicsPixmapItem *> hearts;
     int itemCount;
     Score * sc;
+    Missle * miss;
 public slots:
     void spawn();
     void throwEgg();

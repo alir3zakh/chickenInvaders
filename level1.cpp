@@ -22,14 +22,18 @@ Level1::Level1() :itemCount(0)
     {
         QGraphicsPixmapItem *h = new QGraphicsPixmapItem();
         h->setPixmap(QPixmap(":/img/heart.png"));
-        h->setScale(.7);
+        h->setScale(.5);
         hearts.push_back(h);
         addItem(h);
     }
 
-    hearts[0]->setPos(0,650);
-    hearts[1]->setPos(60,650);
-    hearts[2]->setPos(120,650);
+    hearts[0]->setPos(1100,17);
+    hearts[1]->setPos(1130,17);
+    hearts[2]->setPos(1160,17);
+
+    //adding missle count
+    miss = new Missle();
+    addItem(miss);
 
     //scene points for chickens
     points.push_back(QPointF(120,30));

@@ -10,7 +10,8 @@ SOURCES += \
     egg.cpp \
     rocket.cpp \
     score.cpp \
-    bullet.cpp
+    bullet.cpp \
+    missle.cpp
 
 HEADERS += \
     game.h \
@@ -20,7 +21,8 @@ HEADERS += \
     egg.h \
     rocket.h \
     score.h \
-    bullet.h
+    bullet.h \
+    missle.h
 
 RESOURCES += \
     graphics/images.qrc \
