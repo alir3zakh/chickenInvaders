@@ -6,7 +6,8 @@ SOURCES += \
     level1.cpp \
     egg.cpp \
     rocket.cpp \
-    score.cpp
+    score.cpp \
+    bullet.cpp
 QT += widgets
 
 HEADERS += \
@@ -16,7 +17,8 @@ HEADERS += \
     level1.h \
     egg.h \
     rocket.h \
-    score.h
+    score.h \
+    bullet.h
 
 RESOURCES += \
     graphics/images.qrc

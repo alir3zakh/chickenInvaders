@@ -6,5 +6,6 @@
         <file>egg.png</file>
         <file>rocket.png</file>
         <file>heart.png</file>
+        <file>bullet.png</file>
     </qresource>
 </RCC>

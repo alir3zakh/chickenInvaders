@@ -1,5 +1,6 @@
 #include "game.h"
 #include "level1.h"
+#include <QTimer>
 
 Game::Game(QWidget * parent) : QGraphicsView(parent) {
     lvl = new Level1();
@@ -14,5 +15,8 @@ Game::Game(QWidget * parent) : QGraphicsView(parent) {
 
     this->show();
 
+    timer = new QTimer();
+    connect(timer, SIGNAL(timeout()), lvl, SLOT(advance()));
+    timer->start(25);
 }
 

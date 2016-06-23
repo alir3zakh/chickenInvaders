@@ -67,6 +67,12 @@ void rocket::smash()
         scene()->removeItem(this);
         if(game->lvl->birds.isEmpty())
             return;
+//        if(game->lvl->birds.size() == 1)
+//        {
+//            delete game->lvl->birds.at(0);
+//            game->lvl->birds.pop_back();
+//            return;
+//        }
         for(int i =0;i<game->lvl->birds.size()/2;i++)
         {
             QVector<Bird *>::Iterator it = game->lvl->birds.begin();

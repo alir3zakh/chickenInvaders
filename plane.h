@@ -7,6 +7,7 @@
 #include <QMouseEvent>
 #include <QObject>
 #include "rocket.h"
+#include "bullet.h"
 
 class Plane : public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
@@ -22,6 +23,7 @@ public:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 
 private:
+    int bulletPower;
     QPropertyAnimation * rAnimation;
     QPropertyAnimation * lAnimation;
     QPropertyAnimation * uAnimation;
