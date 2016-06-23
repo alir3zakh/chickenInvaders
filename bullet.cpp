@@ -1,6 +1,10 @@
 #include "bullet.h"
 #include <QGraphicsScene>
 #include <QMediaPlayer>
+#include "game.h"
+
+extern Game * game;
+
 bullet::bullet(qreal bulletAngel)
 {
     setPixmap(QPixmap(":img/bullet.png"));
@@ -19,21 +23,31 @@ void bullet::advance(int phase)
         delete this;
         return;
     }
+    QMediaPlayer * death = new QMediaPlayer();
+    death->setMedia(QUrl("qrc:sound/chicken.mp3"));
+    death->play();
 
     QList<QGraphicsItem *> items = collidingItems();
     for(int i=0 ; i<items.size() ;i++)
     {
         if(typeid(*(items[i])) == typeid(Bird))
         {
+            scene()->removeItem(items[i]);
+            QVector<Bird *>::Iterator it = game->lvl->birds.begin();
+
+            for(int j=0 ; j<game->lvl->birds.size() ;j++)
+            {
+                if(game->lvl->birds.at(j) == items[i])
+                    game->lvl->birds.erase(it+j);
+            }
             QMediaPlayer * death = new QMediaPlayer();
             death->setMedia(QUrl("qrc:sound/chicken.mp3"));
             death->play();
 
-            scene()->removeItem(items[i]);
-            delete(items[i]);
-
+            game->lvl->sc->increase();
             scene()->removeItem(this);
             delete this;
+            return;
         }
     }
 
