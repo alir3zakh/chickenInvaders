@@ -122,7 +122,7 @@ void Plane::keyPressEvent(QKeyEvent *event)
             scene()->addItem(newBullet);
         }
 
-        QMediaPlayer * bulletsound = new QMediaPlayer();
+        QMediaPlayer * bulletsound = new QMediaPlayer(this);
         bulletsound->setMedia(QUrl("qrc:/sound/bullet.mp3"));
         bulletsound->play();
         break;

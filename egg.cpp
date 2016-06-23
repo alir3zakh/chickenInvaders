@@ -4,12 +4,13 @@
 #include <QList>
 #include "plane.h"
 #include "game.h"
+#include <QDebug>
 
 extern Game * game;
 
 Egg::Egg()
 {
-    QMediaPlayer * chickenLay = new QMediaPlayer();
+    QMediaPlayer * chickenLay = new QMediaPlayer(this);
     chickenLay->setMedia(QUrl("qrc:/sound/Chicken_lay.mp3"));
     chickenLay->play();
 
@@ -31,12 +32,13 @@ Egg::Egg()
 void Egg::move()
 {
     if(y() > 650){
-        QMediaPlayer * eggSplat = new QMediaPlayer();
+        QMediaPlayer * eggSplat = new QMediaPlayer(this);
         eggSplat->setMedia(QUrl("qrc:sound/Egg_splat.mp3"));
         eggSplat->play();
 
         setPixmap(QPixmap(":/img/broken-egg.png"));
         opacityAnimation->start();
+        connect(opacityAnimation, SIGNAL(finished()), this, SLOT(destroy()));
         timer->stop();
         return;
     }
@@ -53,6 +55,7 @@ void Egg::move()
             if(size==1)
                 exit(0);
 
+            scene()->removeItem(this);
             delete this;
             delete game->lvl->hearts.at(size-1);
             game->lvl->hearts.pop_back();
@@ -60,4 +63,10 @@ void Egg::move()
         }
     }
 
+}
+
+void Egg::destroy()
+{
+    scene()->removeItem(this);
+    delete this;
 }

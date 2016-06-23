@@ -37,6 +37,7 @@ void bullet::advance(int phase)
                 if(game->lvl->birds.at(j) == items[i])
                     game->lvl->birds.erase(it+j);
             }
+
             QMediaPlayer * death = new QMediaPlayer();
             death->setMedia(QUrl("qrc:sound/chicken.mp3"));
             death->play();
