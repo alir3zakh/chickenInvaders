@@ -2,6 +2,9 @@
 #include <QDebug>
 #include <QGraphicsScene>
 #include <QMediaPlayer>
+#include "game.h"
+
+extern Game * game;
 
 Plane::Plane()
 {
@@ -106,7 +109,7 @@ void Plane::keyPressEvent(QKeyEvent *event)
         scene()->addItem(myRocket);
         myRocket->setPos(x() + 35, y() + 20);
         myRocket->shoot();
-        missileCount--;
+        game->lvl->miss->decrease();
         break;
     }
 

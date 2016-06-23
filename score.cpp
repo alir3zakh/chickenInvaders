@@ -7,10 +7,10 @@ extern Game * game;
 Score::Score()
     :score(0)
 {
-    setPlainText("Score : " + QString::number(score));
+    setPlainText(QString::number(score));
     setFont(QFont("Algerian",25));
     setDefaultTextColor(QColor("grey"));
-    setPos(0,600);
+    setPos(1000,0);
 }
 
 int Score::getScore()
@@ -21,11 +21,11 @@ int Score::getScore()
 void Score::increase()
 {
     score +=100;
-    setPlainText("Score : " + QString::number(score));
+    setPlainText(QString::number(score));
     setFont(QFont("Algerian",25));
     setDefaultTextColor(QColor("grey"));
-    setPos(0,600);
+    setPos(1000,0);
     if((score % 500) == 0){
-        game->lvl->plane->missileCount += 1;
+        game->lvl->miss->increase();
     }
 }
