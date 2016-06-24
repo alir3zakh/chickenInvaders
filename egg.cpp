@@ -39,6 +39,7 @@ void Egg::move()
         setPixmap(QPixmap(":/img/broken-egg.png"));
         opacityAnimation->start();
         timer->stop();
+        QTimer::singleShot(2000, this, SLOT(destroy()));
         return;
     }
 
