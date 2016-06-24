@@ -13,6 +13,7 @@ Bird::Bird()
 
     //set random start position
     static int rand = 1;
+
     if(rand)
     {
         setPos(1200+119,qrand()%300);

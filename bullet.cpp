@@ -1,5 +1,6 @@
 #include "bullet.h"
 #include <QGraphicsScene>
+#include <QMediaPlayer>
 #include "game.h"
 
 extern Game * game;
@@ -10,16 +11,6 @@ bullet::bullet(qreal bulletAngel)
     speed = 10;
     angle = bulletAngel - 90;
     setRotation(angle);
-
-    bulletsound = new QMediaPlayer();
-    bulletsound->setMedia(QUrl("qrc:/sound/bullet.mp3"));
-    bulletsound->play();
-}
-
-bullet::~bullet()
-{
-   // delete bulletsound;
-
 }
 
 void bullet::advance(int phase)
@@ -46,12 +37,12 @@ void bullet::advance(int phase)
                 if(game->lvl->birds.at(j) == items[i])
                     game->lvl->birds.erase(it+j);
             }
-
-            death = new QMediaPlayer();
+            QMediaPlayer * death = new QMediaPlayer();
             death->setMedia(QUrl("qrc:sound/chicken.mp3"));
             death->play();
 
             game->lvl->sc->increase();
+            game->lvl->plane->chickensKilled++;
             scene()->removeItem(this);
             delete this;
             return;

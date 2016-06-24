@@ -3,7 +3,6 @@
 
 #include <QGraphicsPixmapItem>
 #include <QPropertyAnimation>
-#include <QMediaPlayer>
 #include <QObject>
 #include <QTimer>
 
@@ -23,7 +22,6 @@ public:
 private:
     QPropertyAnimation * xAnimation;
     QPropertyAnimation * yAnimation;
-    QMediaPlayer * lunch;
     QTimer * timer;
 
 private slots:

@@ -5,7 +5,6 @@
 #include <QPropertyAnimation>
 #include <QKeyEvent>
 #include <QMouseEvent>
-#include <QMediaPlayer>
 #include <QObject>
 #include "rocket.h"
 #include "bullet.h"
@@ -17,7 +16,7 @@ class Plane : public QObject, public QGraphicsPixmapItem{
 public:
     Plane();
     int missileCount;
-
+    int chickensKilled;
     int xFactor();
     int yFactor();
     void setXFactor(int newX);

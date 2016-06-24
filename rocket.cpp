@@ -61,7 +61,7 @@ void rocket::shoot()
     xAnimation->start();
     yAnimation->start();
 
-    lunch = new QMediaPlayer();
+    QMediaPlayer * lunch = new QMediaPlayer();
     lunch->setMedia(QUrl("qrc:/sound/missile_lunch.mp3"));
     lunch->play();
 }
@@ -72,6 +72,10 @@ void rocket::smash()
         QMediaPlayer * explode = new QMediaPlayer();
         explode->setMedia(QUrl("qrc:/sound/explosion.mp3"));
         explode->play();
+        scene()->removeItem(this);
+
+        //if(game->lvl->birds.isEmpty())
+          //  return;
 
         for(int i =0;i<game->lvl->birds.size()/2;i++)
         {
@@ -79,9 +83,8 @@ void rocket::smash()
             delete game->lvl->birds.at(i);
             game->lvl->birds.erase(it+i);
             game->lvl->sc->increase();
+            game->lvl->plane->chickensKilled++;
         }
-        delete lunch;
-        scene()->removeItem(this);
         delete this;
     }
 }

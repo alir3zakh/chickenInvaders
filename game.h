@@ -8,6 +8,7 @@
 #include <QTimer>
 #include "mainp.h"
 #include "nameenter.h"
+#include "lastp.h"
 
 class Game : public QGraphicsView {
 public:
@@ -15,6 +16,7 @@ public:
     Level1 * lvl;
     mainP * mainPage;
     nameEnter * ne;
+    lastP * lastPage;
 private :
     QTimer * timer;
 };

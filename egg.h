@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QTimer>
 #include <QPropertyAnimation>
-#include <QMediaPlayer>
 
 class Egg : public QObject , public QGraphicsPixmapItem
 {
@@ -21,9 +20,6 @@ public slots:
 private:
     QPropertyAnimation * opacityAnimation;
     QTimer *timer;
-    QMediaPlayer * chickenLay;
-    QMediaPlayer * eggSplat;
-    QMediaPlayer * playerDeath;
 };
 
 #endif // EGG_H

@@ -12,10 +12,11 @@ SOURCES += \
     score.cpp \
     bullet.cpp \
     missle.cpp \
-    bulletbouncer.cpp \
     btn.cpp \
     mainp.cpp \
-    nameenter.cpp
+    nameenter.cpp \
+    bulletbouncer.cpp \
+    lastp.cpp
 
 HEADERS += \
     game.h \
@@ -27,10 +28,11 @@ HEADERS += \
     score.h \
     bullet.h \
     missle.h \
-    bulletbouncer.h \
     btn.h \
     mainp.h \
-    nameenter.h
+    nameenter.h \
+    bulletbouncer.h \
+    lastp.h
 
 RESOURCES += \
     graphics/images.qrc \

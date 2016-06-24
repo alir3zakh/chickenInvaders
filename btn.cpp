@@ -64,10 +64,17 @@ void Btn::mousePressEvent(QGraphicsSceneMouseEvent *event)
     {
         game->setScene(game->ne);
     }
+
     if(this->objectName() == "enterBtn")
     {
         game->lvl = new Level1();
         game->setScene(game->lvl);
+    }
+
+    if(this->objectName() == "menuBtn")
+    {
+        game->lvl->timer3->stop();
+        game->setScene(game->mainPage);
     }
 }
 

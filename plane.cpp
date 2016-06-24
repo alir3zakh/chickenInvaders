@@ -7,6 +7,7 @@
 extern Game * game;
 
 Plane::Plane()
+    :chickensKilled(0)
 {
     setPixmap(QPixmap(":img/plane.png"));
     setScale(.65);
@@ -121,6 +122,10 @@ void Plane::keyPressEvent(QKeyEvent *event)
             newBullet->setPos(x() + 35, y() + 10);
             scene()->addItem(newBullet);
         }
+
+        QMediaPlayer * bulletsound = new QMediaPlayer();
+        bulletsound->setMedia(QUrl("qrc:/sound/bullet.mp3"));
+        bulletsound->play();
         break;
     }
 

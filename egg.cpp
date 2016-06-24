@@ -1,15 +1,16 @@
 #include "egg.h"
 #include <QGraphicsScene>
+#include <QMediaPlayer>
 #include <QList>
 #include "plane.h"
 #include "game.h"
-#include <QDebug>
+#include "lastp.h"
 
 extern Game * game;
 
 Egg::Egg()
 {
-    chickenLay = new QMediaPlayer();
+    QMediaPlayer * chickenLay = new QMediaPlayer(this);
     chickenLay->setMedia(QUrl("qrc:/sound/Chicken_lay.mp3"));
     chickenLay->play();
 
@@ -31,15 +32,13 @@ Egg::Egg()
 void Egg::move()
 {
     if(y() > 650){
-        eggSplat = new QMediaPlayer();
+        QMediaPlayer * eggSplat = new QMediaPlayer();
         eggSplat->setMedia(QUrl("qrc:sound/Egg_splat.mp3"));
         eggSplat->play();
 
         setPixmap(QPixmap(":/img/broken-egg.png"));
         opacityAnimation->start();
-        connect(opacityAnimation, SIGNAL(finished()), this, SLOT(destroy()));
         timer->stop();
-
         return;
     }
 
@@ -50,22 +49,23 @@ void Egg::move()
     {
         if(typeid(*(items[i])) == typeid(Plane))
         {
-            playerDeath = new QMediaPlayer();
-            playerDeath->setMedia(QUrl("qrc:sound/Hero_death.mp3"));
-            playerDeath->play();
-
+            int size = game->lvl->hearts.size();
             game->lvl->plane->decreaseBulletPower();
 
-            int size = game->lvl->hearts.size();
+            QMediaPlayer * herodeath = new QMediaPlayer();
+            herodeath->setMedia(QUrl("qrc:/sound/Hero_death.mp3"));
+            herodeath->play();
+
             if(size==1)
-                exit(0);
-
-            scene()->removeItem(this);
+            {
+                lastP *lp = new lastP(QString("you Lost!"));
+                game->lastPage = lp;
+                game->setScene(game->lastPage);
+                return;
+            }
             delete this;
-
             delete game->lvl->hearts.at(size-1);
             game->lvl->hearts.pop_back();
-            //delete playerDeath;
             return;
         }
     }
@@ -76,6 +76,5 @@ void Egg::destroy()
 {
     scene()->removeItem(this);
     delete this;
-    delete chickenLay;
-    delete eggSplat;
 }
+
