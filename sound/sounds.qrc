@@ -6,5 +6,6 @@
         <file>missile_lunch.mp3</file>
         <file>Egg_splat.mp3</file>
         <file>Chicken_lay.mp3</file>
+        <file>Hero_death.mp3</file>
     </qresource>
 </RCC>

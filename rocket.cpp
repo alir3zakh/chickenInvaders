@@ -61,7 +61,7 @@ void rocket::shoot()
     xAnimation->start();
     yAnimation->start();
 
-    QMediaPlayer * lunch = new QMediaPlayer(this);
+    QMediaPlayer * lunch = new QMediaPlayer();
     lunch->setMedia(QUrl("qrc:/sound/missile_lunch.mp3"));
     lunch->play();
 }
@@ -69,7 +69,7 @@ void rocket::shoot()
 void rocket::smash()
 {
     if(xAnimation->state() == QAbstractAnimation::Stopped){
-        QMediaPlayer * explode = new QMediaPlayer(this);
+        QMediaPlayer * explode = new QMediaPlayer();
         explode->setMedia(QUrl("qrc:/sound/explosion.mp3"));
         explode->play();
         scene()->removeItem(this);

@@ -25,6 +25,9 @@ public:
     void keyPressEvent(QKeyEvent *event);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 
+    void increaseBulletPower();
+    void decreaseBulletPower();
+
 private:
     int bulletPower;
     QPropertyAnimation * rAnimation;

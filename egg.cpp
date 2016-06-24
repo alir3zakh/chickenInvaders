@@ -10,7 +10,7 @@ extern Game * game;
 
 Egg::Egg()
 {
-    QMediaPlayer * chickenLay = new QMediaPlayer(this);
+    QMediaPlayer * chickenLay = new QMediaPlayer();
     chickenLay->setMedia(QUrl("qrc:/sound/Chicken_lay.mp3"));
     chickenLay->play();
 
@@ -32,7 +32,7 @@ Egg::Egg()
 void Egg::move()
 {
     if(y() > 650){
-        QMediaPlayer * eggSplat = new QMediaPlayer(this);
+        QMediaPlayer * eggSplat = new QMediaPlayer();
         eggSplat->setMedia(QUrl("qrc:sound/Egg_splat.mp3"));
         eggSplat->play();
 
@@ -40,6 +40,7 @@ void Egg::move()
         opacityAnimation->start();
         connect(opacityAnimation, SIGNAL(finished()), this, SLOT(destroy()));
         timer->stop();
+
         return;
     }
 
@@ -50,13 +51,19 @@ void Egg::move()
     {
         if(typeid(*(items[i])) == typeid(Plane))
         {
-            int size = game->lvl->hearts.size();
+            QMediaPlayer * playerDeath = new QMediaPlayer();
+            playerDeath->setMedia(QUrl("qrc:sound/Hero_death.mp3"));
+            playerDeath->play();
 
+            game->lvl->plane->decreaseBulletPower();
+
+            int size = game->lvl->hearts.size();
             if(size==1)
                 exit(0);
 
             scene()->removeItem(this);
             delete this;
+
             delete game->lvl->hearts.at(size-1);
             game->lvl->hearts.pop_back();
             return;

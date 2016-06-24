@@ -3,7 +3,7 @@
 #include <QTimer>
 #include <QDebug>
 #include "egg.h"
-#include "plane.h"
+#include "bulletbouncer.h"
 
 Level1::Level1() :itemCount(0)
 {
