@@ -2,7 +2,6 @@
 #include <QGraphicsScene>
 #include <QtMath>
 #include <QDebug>
-#include <QMediaPlayer>
 #include "level1.h"
 #include "game.h"
 
@@ -61,7 +60,7 @@ void rocket::shoot()
     xAnimation->start();
     yAnimation->start();
 
-    QMediaPlayer * lunch = new QMediaPlayer();
+    lunch = new QMediaPlayer();
     lunch->setMedia(QUrl("qrc:/sound/missile_lunch.mp3"));
     lunch->play();
 }
@@ -72,9 +71,8 @@ void rocket::smash()
         QMediaPlayer * explode = new QMediaPlayer();
         explode->setMedia(QUrl("qrc:/sound/explosion.mp3"));
         explode->play();
-        scene()->removeItem(this);
-        if(game->lvl->birds.isEmpty())
-            return;
+//        if(game->lvl->birds.isEmpty())
+//            return;
 //        if(game->lvl->birds.size() == 1)
 //        {
 //            delete game->lvl->birds.at(0);
@@ -88,6 +86,8 @@ void rocket::smash()
             game->lvl->birds.erase(it+i);
             game->lvl->sc->increase();
         }
+        delete lunch;
+        scene()->removeItem(this);
         delete this;
     }
 }

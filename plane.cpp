@@ -2,6 +2,7 @@
 #include <QDebug>
 #include <QGraphicsScene>
 #include <QMediaPlayer>
+#include <QGraphicsSceneMouseEvent>
 #include "game.h"
 
 extern Game * game;
@@ -44,6 +45,7 @@ Plane::Plane()
 
     bulletPower = 1;
     missileCount = 1;
+
 }
 
 int Plane::xFactor()
@@ -121,10 +123,6 @@ void Plane::keyPressEvent(QKeyEvent *event)
             newBullet->setPos(x() + 35, y() + 10);
             scene()->addItem(newBullet);
         }
-
-        QMediaPlayer * bulletsound = new QMediaPlayer();
-        bulletsound->setMedia(QUrl("qrc:/sound/bullet.mp3"));
-        bulletsound->play();
         break;
     }
 

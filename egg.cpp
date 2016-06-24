@@ -1,6 +1,5 @@
 #include "egg.h"
 #include <QGraphicsScene>
-#include <QMediaPlayer>
 #include <QList>
 #include "plane.h"
 #include "game.h"
@@ -10,7 +9,7 @@ extern Game * game;
 
 Egg::Egg()
 {
-    QMediaPlayer * chickenLay = new QMediaPlayer();
+    chickenLay = new QMediaPlayer();
     chickenLay->setMedia(QUrl("qrc:/sound/Chicken_lay.mp3"));
     chickenLay->play();
 
@@ -32,7 +31,7 @@ Egg::Egg()
 void Egg::move()
 {
     if(y() > 650){
-        QMediaPlayer * eggSplat = new QMediaPlayer();
+        eggSplat = new QMediaPlayer();
         eggSplat->setMedia(QUrl("qrc:sound/Egg_splat.mp3"));
         eggSplat->play();
 
@@ -51,7 +50,7 @@ void Egg::move()
     {
         if(typeid(*(items[i])) == typeid(Plane))
         {
-            QMediaPlayer * playerDeath = new QMediaPlayer();
+            playerDeath = new QMediaPlayer();
             playerDeath->setMedia(QUrl("qrc:sound/Hero_death.mp3"));
             playerDeath->play();
 
@@ -66,6 +65,7 @@ void Egg::move()
 
             delete game->lvl->hearts.at(size-1);
             game->lvl->hearts.pop_back();
+            //delete playerDeath;
             return;
         }
     }
@@ -76,4 +76,6 @@ void Egg::destroy()
 {
     scene()->removeItem(this);
     delete this;
+    delete chickenLay;
+    delete eggSplat;
 }
