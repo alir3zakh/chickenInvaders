@@ -30,6 +30,7 @@ public:
 
 private:
     int bulletPower;
+    QPropertyAnimation * shootAnimation;
     QPropertyAnimation * rAnimation;
     QPropertyAnimation * lAnimation;
     QPropertyAnimation * uAnimation;

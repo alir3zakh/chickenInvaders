@@ -43,6 +43,14 @@ Plane::Plane()
     dAnimation->setEndValue(y() + 40);
     dAnimation->setDuration(100);
 
+    shootAnimation = new QPropertyAnimation(this);
+    shootAnimation->setTargetObject(this);
+    shootAnimation->setPropertyName("yFactor");
+    shootAnimation->setStartValue(y());
+    shootAnimation->setEndValue(y() + 10);
+    shootAnimation->setKeyValueAt(0.5, y() + 10);
+    shootAnimation->setDuration(100);
+
     bulletPower = 1;
     missileCount = 1;
 }
@@ -115,6 +123,10 @@ void Plane::keyPressEvent(QKeyEvent *event)
     }
 
     case Qt::Key_Control:{
+        shootAnimation->setStartValue(y());
+        shootAnimation->setEndValue(y());
+        shootAnimation->setKeyValueAt(0.5, y() + 10);
+        shootAnimation->start();
         int regionCount = bulletPower + 3;
         qreal baseAngel = 180 / regionCount;
         for(int i = 0; i < bulletPower; i++){
