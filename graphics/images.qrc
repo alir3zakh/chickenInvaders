@@ -8,5 +8,8 @@
         <file>heart.png</file>
         <file>bullet.png</file>
         <file>broken-egg.png</file>
+        <file>Fork.png</file>
+        <file>logo.png</file>
+        <file>bounce.png</file>
     </qresource>
 </RCC>

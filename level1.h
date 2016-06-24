@@ -20,9 +20,12 @@ public:
     int itemCount;
     Score * sc;
     Missle * miss;
+    QTimer * timer3;
 public slots:
     void spawn();
     void throwEgg();
+    void killCheck();
+    void birdCheck();
 };
 
 #endif // LEVEL1_H

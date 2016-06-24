@@ -42,6 +42,7 @@ void bullet::advance(int phase)
             death->play();
 
             game->lvl->sc->increase();
+            game->lvl->plane->chickensKilled++;
             scene()->removeItem(this);
             delete this;
             return;

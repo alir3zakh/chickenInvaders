@@ -4,9 +4,18 @@
 #include <QDebug>
 #include "egg.h"
 #include "plane.h"
+#include "game.h"
+#include "lastp.h"
+#include "bulletbouncer.h"
+
+extern Game * game;
 
 Level1::Level1() :itemCount(0)
 {
+    timer3 = new QTimer();
+    connect(timer3, SIGNAL(timeout()), this, SLOT(advance()));
+    timer3->start(25);
+
     setSceneRect(0,0,1200,700);
     plane = new Plane();
     plane->setPos((width() / 2) - plane->pixmap().width()/2,
@@ -64,6 +73,14 @@ Level1::Level1() :itemCount(0)
     QTimer * timer2 = new QTimer();
     connect(timer2 , SIGNAL(timeout()), this , SLOT(throwEgg()));
     timer2->start(2000);
+
+    timer3 = new QTimer();
+    connect(timer3 , SIGNAL(timeout()), this , SLOT(birdCheck()));
+    timer3->start(2000);
+
+    QTimer *timer4 = new QTimer();
+    connect(timer4 , SIGNAL(timeout()), this , SLOT(killCheck()));
+    timer4->start(10);
 }
 
 void Level1::spawn()
@@ -94,4 +111,39 @@ void Level1::throwEgg()
     int randN = qrand()%(birds.size());
     egg->setPos(birds[randN]->x()+27 , birds[randN]->y()+66);
     addItem(egg);
+}
+
+void Level1::killCheck()
+{
+    if(birds.isEmpty())
+        return;
+    static int lastCall =0;
+    if(plane->chickensKilled % 12 == 0 && plane->chickensKilled != lastCall)
+    {
+        bulletBouncer *bb = new bulletBouncer();
+        int randN = qrand()%birds.size();
+        bb->setPos(birds.at(randN)->x()+27,birds.at(randN)->y()+66);
+        addItem(bb);
+        lastCall = plane->chickensKilled;
+    }
+}
+
+void Level1::birdCheck()
+{
+    if(birds.isEmpty())
+    {
+        lastP *lp = new lastP(QString("you won!!"));
+        game->lastPage = lp;
+        game->setScene(game->lastPage);
+    }
+
+//    if(i%7 == 0)
+//    {
+
+//        bulletBouncer *bb = new bulletBouncer();
+//        int randN = qrand()%birds.size();
+//        bb->setPos(birds.at(randN)->x()+27,birds.at(randN)->y()+66);
+//        addItem(bb);
+//    }
+//    i++;
 }

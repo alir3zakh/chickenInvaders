@@ -73,20 +73,17 @@ void rocket::smash()
         explode->setMedia(QUrl("qrc:/sound/explosion.mp3"));
         explode->play();
         scene()->removeItem(this);
-        if(game->lvl->birds.isEmpty())
-            return;
-//        if(game->lvl->birds.size() == 1)
-//        {
-//            delete game->lvl->birds.at(0);
-//            game->lvl->birds.pop_back();
-//            return;
-//        }
+
+        //if(game->lvl->birds.isEmpty())
+          //  return;
+
         for(int i =0;i<game->lvl->birds.size()/2;i++)
         {
             QVector<Bird *>::Iterator it = game->lvl->birds.begin();
             delete game->lvl->birds.at(i);
             game->lvl->birds.erase(it+i);
             game->lvl->sc->increase();
+            game->lvl->plane->chickensKilled++;
         }
         delete this;
     }

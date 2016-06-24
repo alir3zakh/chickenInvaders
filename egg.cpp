@@ -4,12 +4,13 @@
 #include <QList>
 #include "plane.h"
 #include "game.h"
+#include "lastp.h"
 
 extern Game * game;
 
 Egg::Egg()
 {
-    QMediaPlayer * chickenLay = new QMediaPlayer();
+    QMediaPlayer * chickenLay = new QMediaPlayer(this);
     chickenLay->setMedia(QUrl("qrc:/sound/Chicken_lay.mp3"));
     chickenLay->play();
 
@@ -49,10 +50,19 @@ void Egg::move()
         if(typeid(*(items[i])) == typeid(Plane))
         {
             int size = game->lvl->hearts.size();
+            game->lvl->plane->decreaseBulletPower();
+
+            QMediaPlayer * herodeath = new QMediaPlayer();
+            herodeath->setMedia(QUrl("qrc:/sound/Hero_death.mp3"));
+            herodeath->play();
 
             if(size==1)
-                exit(0);
-
+            {
+                lastP *lp = new lastP(QString("you Lost!"));
+                game->lastPage = lp;
+                game->setScene(game->lastPage);
+                return;
+            }
             delete this;
             delete game->lvl->hearts.at(size-1);
             game->lvl->hearts.pop_back();
@@ -61,3 +71,10 @@ void Egg::move()
     }
 
 }
+
+void Egg::destroy()
+{
+    scene()->removeItem(this);
+    delete this;
+}
+

@@ -7,6 +7,7 @@
 extern Game * game;
 
 Plane::Plane()
+    :chickensKilled(0)
 {
     setPixmap(QPixmap(":img/plane.png"));
     setScale(.65);
@@ -143,5 +144,26 @@ void Plane::keyPressEvent(QKeyEvent *event)
 
 void Plane::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
+}
+
+void Plane::increaseBulletPower()
+{
+    if(bulletPower == 4)
+        return;
+    bulletPower++;
+}
+
+void Plane::decreaseBulletPower()
+{
+    if(bulletPower == 2){
+        bulletPower--;
+        return;
+    }
+
+    if(bulletPower == 1){
+        return;
+    }
+
+    bulletPower -= 2;
 }
 

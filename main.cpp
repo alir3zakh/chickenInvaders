@@ -8,6 +8,7 @@ int main(int argc, char * argv[]){
 
     game = new Game();
     game->show();
+    app.setOverrideCursor(QCursor(QPixmap(":/img/Fork.png")));
 
     return app.exec();
 }

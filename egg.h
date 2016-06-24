@@ -15,6 +15,7 @@ public:
 
 public slots:
     void move();
+    void destroy();
 
 private:
     QPropertyAnimation * opacityAnimation;

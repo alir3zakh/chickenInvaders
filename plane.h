@@ -16,7 +16,7 @@ class Plane : public QObject, public QGraphicsPixmapItem{
 public:
     Plane();
     int missileCount;
-
+    int chickensKilled;
     int xFactor();
     int yFactor();
     void setXFactor(int newX);
@@ -24,6 +24,9 @@ public:
 
     void keyPressEvent(QKeyEvent *event);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+
+    void increaseBulletPower();
+    void decreaseBulletPower();
 
 private:
     int bulletPower;
