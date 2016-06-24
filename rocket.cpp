@@ -2,6 +2,7 @@
 #include <QGraphicsScene>
 #include <QtMath>
 #include <QDebug>
+#include <QMediaPlayer>
 #include "level1.h"
 #include "game.h"
 
@@ -71,14 +72,7 @@ void rocket::smash()
         QMediaPlayer * explode = new QMediaPlayer();
         explode->setMedia(QUrl("qrc:/sound/explosion.mp3"));
         explode->play();
-//        if(game->lvl->birds.isEmpty())
-//            return;
-//        if(game->lvl->birds.size() == 1)
-//        {
-//            delete game->lvl->birds.at(0);
-//            game->lvl->birds.pop_back();
-//            return;
-//        }
+
         for(int i =0;i<game->lvl->birds.size()/2;i++)
         {
             QVector<Bird *>::Iterator it = game->lvl->birds.begin();

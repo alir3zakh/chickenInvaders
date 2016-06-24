@@ -18,7 +18,7 @@ bullet::bullet(qreal bulletAngel)
 
 bullet::~bullet()
 {
-    delete bulletsound;
+   // delete bulletsound;
 
 }
 

@@ -2,7 +2,6 @@
 #include <QDebug>
 #include <QGraphicsScene>
 #include <QMediaPlayer>
-#include <QGraphicsSceneMouseEvent>
 #include "game.h"
 
 extern Game * game;
@@ -45,7 +44,6 @@ Plane::Plane()
 
     bulletPower = 1;
     missileCount = 1;
-
 }
 
 int Plane::xFactor()

@@ -9,5 +9,6 @@
         <file>bullet.png</file>
         <file>broken-egg.png</file>
         <file>bounce.png</file>
+        <file>Fork.png</file>
     </qresource>
 </RCC>

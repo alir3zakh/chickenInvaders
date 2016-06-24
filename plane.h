@@ -5,6 +5,7 @@
 #include <QPropertyAnimation>
 #include <QKeyEvent>
 #include <QMouseEvent>
+#include <QMediaPlayer>
 #include <QObject>
 #include "rocket.h"
 #include "bullet.h"

@@ -7,6 +7,10 @@
 
 Level1::Level1() :itemCount(0)
 {
+    QTimer *timer1 = new QTimer();
+    connect(timer1, SIGNAL(timeout()), this, SLOT(advance()));
+    timer1->start(25);
+
     setSceneRect(0,0,1200,700);
     plane = new Plane();
     plane->setPos((width() / 2) - plane->pixmap().width()/2,
