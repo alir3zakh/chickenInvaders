@@ -9,6 +9,7 @@
 #include "mainp.h"
 #include "nameenter.h"
 #include "lastp.h"
+#include "halloffame.h"
 
 class Game : public QGraphicsView {
 public:
@@ -17,6 +18,8 @@ public:
     mainP * mainPage;
     nameEnter * ne;
     lastP * lastPage;
+    HallOfFame * hof;
+    QString player;
 private :
     QTimer * timer;
 };

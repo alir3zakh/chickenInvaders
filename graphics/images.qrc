@@ -11,5 +11,6 @@
         <file>Fork.png</file>
         <file>logo.png</file>
         <file>bounce.png</file>
+        <file>poof.png</file>
     </qresource>
 </RCC>

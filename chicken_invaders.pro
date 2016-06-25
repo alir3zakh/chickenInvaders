@@ -16,7 +16,8 @@ SOURCES += \
     mainp.cpp \
     nameenter.cpp \
     bulletbouncer.cpp \
-    lastp.cpp
+    lastp.cpp \
+    halloffame.cpp
 
 HEADERS += \
     game.h \
@@ -32,7 +33,8 @@ HEADERS += \
     mainp.h \
     nameenter.h \
     bulletbouncer.h \
-    lastp.h
+    lastp.h \
+    halloffame.h
 
 RESOURCES += \
     graphics/images.qrc \

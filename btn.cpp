@@ -5,6 +5,7 @@
 #include "mainp.h"
 #include "game.h"
 #include "level1.h"
+#include "halloffame.h"
 
 extern Game * game;
 
@@ -67,6 +68,11 @@ void Btn::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
     if(this->objectName() == "enterBtn")
     {
+        if(game->ne->le->text() == NULL)
+            return;
+
+        game->player = game->ne->le->text();
+        qDebug()<<game->player;
         game->lvl = new Level1();
         game->setScene(game->lvl);
     }
@@ -74,6 +80,16 @@ void Btn::mousePressEvent(QGraphicsSceneMouseEvent *event)
     if(this->objectName() == "menuBtn")
     {
         game->lvl->timer3->stop();
+        game->setScene(game->mainPage);
+    }
+    if(this->objectName() == "hofBtn")
+    {
+        HallOfFame *h = new HallOfFame();
+        game->hof = h;
+        game->setScene(game->hof);
+    }
+    if(this->objectName() == "mmBtn")
+    {
         game->setScene(game->mainPage);
     }
 }

@@ -17,6 +17,7 @@ public:
     QVector<QPointF> points;
     QVector<Bird *> birds;
     QVector<QGraphicsPixmapItem *> hearts;
+    void updateFile();
     int itemCount;
     Score * sc;
     Missle * miss;

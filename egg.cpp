@@ -46,6 +46,7 @@ void Egg::move()
     setPos(x(),y() + 5);
     //if collides with the plane decrease the player's health
     QList<QGraphicsItem *> items = collidingItems();
+    static bool in = true;
     for(int i=0 ; i<items.size() ;i++)
     {
         if(typeid(*(items[i])) == typeid(Plane))
@@ -57,11 +58,14 @@ void Egg::move()
             herodeath->setMedia(QUrl("qrc:/sound/Hero_death.mp3"));
             herodeath->play();
 
-            if(size==1)
+            if(size==1&& in)
             {
+                in = false;
+                game->lvl->updateFile();
                 lastP *lp = new lastP(QString("you Lost!"));
                 game->lastPage = lp;
                 game->setScene(game->lastPage);
+                game->lvl->timer3->stop();
                 return;
             }
             delete this;

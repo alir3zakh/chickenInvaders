@@ -132,18 +132,48 @@ void Level1::birdCheck()
 {
     if(birds.isEmpty())
     {
+        updateFile();
         lastP *lp = new lastP(QString("you won!!"));
         game->lastPage = lp;
         game->setScene(game->lastPage);
     }
+}
 
-//    if(i%7 == 0)
-//    {
+void Level1::updateFile()
+{
+    QFile file("/Users/alireza/Documents/QT/chickenInvaders-local5/records.txt");
+    QMultiMap<int,QString> recs;
+    QTextStream in(&file);
+    QString line;
+    QStringList list;
 
-//        bulletBouncer *bb = new bulletBouncer();
-//        int randN = qrand()%birds.size();
-//        bb->setPos(birds.at(randN)->x()+27,birds.at(randN)->y()+66);
-//        addItem(bb);
-//    }
-//    i++;
+    if(file.open(QFile::Text | QFile::ReadOnly))
+    {
+        qDebug() << "ENTERED";
+        while(!in.atEnd())
+        {
+            line = in.readLine();
+            list = line.split(" ");
+            recs.insert(list.at(1).toInt(),list.at(0));
+        }
+        recs.insert(game->lvl->sc->getScore(),game->player);
+    }
+
+    file.close();
+    //qDebug()<<recs.keys();
+    //qDebug()<<recs.values();
+    QTextStream out(&file);
+    QMultiMap<int,QString>::iterator it = --(recs.end());
+
+    if(file.open(QFile::Text | QFile::WriteOnly|QFile::Truncate))
+    {
+
+        while(it != --(recs.begin()))
+        {
+            out << it.value()<<" "<<it.key()<<endl;
+            --it;
+        }
+    }
+    file.close();
+    game->lvl->timer3->stop();
 }
